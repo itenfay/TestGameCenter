@@ -27,7 +27,7 @@
 
 2. 在iTunes Store中创建应用，打开Game Cemter选项。
 
-- 授权并测试 (Authentication and Testing)
+- 认证并测试 (Authentication and Testing)
 
 ```ObjC
 - (IBAction)authenticate:(id)sender {
@@ -60,7 +60,7 @@
 
 ## 通知观察
 
-   当玩家的认证信息发生了改变时，即可认为玩家在系统设置中的Game Center上切换了另一个账号，应用就会通知观察者，从而开发者在应用中处理一些相关的任务。
+   当玩家的认证信息发生了改变时，即可认为玩家在系统设置中的 Game Center 上切换了另一个账号，应用就会通知观察者，从而开发者在应用中处理一些相关的任务。
 
 ```ObjC
 - (void)addAuthenticationObserver {
@@ -76,7 +76,9 @@
 ## 移除通知观察
 
 ```ObjC
+- (void)removeAuthenticationObserver {
     [NSNotificationCenter.defaultCenter removeObserver:self name:GKPlayerAuthenticationDidChangeNotificationName object:nil];
+}
 ```
 
 ## Sample Codes
