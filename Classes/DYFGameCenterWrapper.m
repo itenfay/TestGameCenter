@@ -45,44 +45,56 @@
 
 - (void)authenticateFromViewController:(UIViewController *)fromViewController completion:(void (^)(GKLocalPlayer *, NSError *))completionHandler {
     if (GKLocalPlayer.localPlayer.isAuthenticated) {
+        
         GKLocalPlayer *player = GKLocalPlayer.localPlayer;
         !completionHandler ?: completionHandler(player, nil);
+        
     } else {
         [GKLocalPlayer.localPlayer setAuthenticateHandler:^(UIViewController * _Nullable viewController, NSError * _Nullable error) {
+            
             if (!error) {
+                
                 if (viewController) {
+                    
                     UIViewController *viewController = fromViewController;
-                    if (!fromViewController) {
+                    if (!viewController) {
                         viewController = self.visibleViewController;
                     }
                     [viewController presentViewController:viewController animated:YES completion:NULL];
+                    
                 } else {
+                    
                     GKLocalPlayer *player = GKLocalPlayer.localPlayer;
                     GKLog(@"[GameCenter] [Player] id: %@, name: %@, alias: %@", player.playerID, player.displayName, player.alias);
                     !completionHandler ?: completionHandler(player, nil);
+                    
                 }
+                
             } else {
+                
                 GKLog(@"[GameCenter] [Error] code: %@, reason: %@", @(error.code), error.localizedDescription);
                 !completionHandler ?: completionHandler(nil, error);
             }
+            
         }];
     }
 }
 
 - (void)addAuthenticationObserver {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerAuthenticationDidChange:)
-                                                 name:GKPlayerAuthenticationDidChangeNotificationName
-                                               object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(playerAuthenticationDidChange:)
+                                               name:GKPlayerAuthenticationDidChangeNotificationName
+                                             object:nil];
 }
 
 - (void)removeAuthenticationObserver {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:GKPlayerAuthenticationDidChangeNotificationName
-                                                  object:nil];
+    [NSNotificationCenter.defaultCenter removeObserver:self
+                                                  name:GKPlayerAuthenticationDidChangeNotificationName
+                                                object:nil];
 }
 
-- (void)playerAuthenticationDidChange:(NSNotification *)notification {
-    GKLog(@"[GameCenter] [UserInfo]: %@", notification.userInfo);
+- (void)playerAuthenticationDidChange:(NSNotification *)noti {
+    GKLog(@"[GameCenter] [Notification] object: %@, userInfo: %@", noti.object, noti.userInfo);
 }
 
 - (void)reportScore:(int64_t)score forLeaderboardID:(NSString *)indentifier {
@@ -90,20 +102,26 @@
         [self authenticateWithCompletion:NULL];
         return;
     }
+    
     GKScore *scoreOjbect = [[GKScore alloc] initWithLeaderboardIdentifier:indentifier];
-    scoreOjbect.value = score;
-    scoreOjbect.context = 0;
+    scoreOjbect.value    = score;
+    scoreOjbect.context  = 0;
     [GKScore reportScores:@[scoreOjbect] withCompletionHandler:^(NSError * _Nullable error) {
+        
         if (!error) {
+            
             GKGameCenterViewController *gcvc = [[GKGameCenterViewController alloc] init];
-            gcvc.gameCenterDelegate = self;
+            gcvc.gameCenterDelegate    = self;
             gcvc.leaderboardIdentifier = indentifier;
-            gcvc.viewState = GKGameCenterViewControllerStateChallenges;
+            gcvc.viewState             = GKGameCenterViewControllerStateChallenges;
             [self.visibleViewController presentViewController:gcvc animated:YES completion:NULL];
             GKLog(@"[GameCenter] report score: %lld", score);
+            
         } else {
+            
             GKLog(@"[GameCenter] [Error] code: %@, reason: %@", @(error.code), error.localizedDescription);
         }
+        
     }];
 }
 
@@ -112,12 +130,13 @@
 }
 
 - (UIViewController *)visibleViewController {
-    UIApplication *app = UIApplication.sharedApplication;
-    UIWindow *window = app.delegate.window;
+    UIApplication *app   = UIApplication.sharedApplication;
+    UIWindow *window     = app.delegate.window;
     UIViewController *vc = window.rootViewController;
+    
     while (vc) {
         if ([vc isKindOfClass:[UITabBarController class]]) {
-            UITabBarController *tbc = (UITabBarController *)vc;
+            UITabBarController *tbc    = (UITabBarController *)vc;
             vc = tbc.selectedViewController;
         } else if ([vc isKindOfClass:[UINavigationController class]]) {
             UINavigationController *nc = (UINavigationController *)vc;
@@ -129,6 +148,7 @@
             vc = vc.presentedViewController;
         }
     }
+    
     return vc;
 }
 
