@@ -4,12 +4,15 @@
 
 ## TestGameCenter
 
-测试 Game Center 的登录认证，通过自己封装的 `DYFGameCenterWrapper` 类完成 Game Center 的认证对接。(Tests the Game Center authentication and completes the Game Center authentication access through myself encapsulated  `DYFGameCenterWrapper`  class.)
+&emsp; 测试 Game Center 的登录认证，通过自己封装的 `DYFGameCenterWrapper` 类完成 Game Center 的认证对接。(Tests the Game Center authentication and completes the Game Center authentication access through myself encapsulated  `DYFGameCenterWrapper`  class.)
 
 ## 技术交流群(群号:155353383) 
 
-欢迎加入技术交流群，一起探讨技术问题。<br />
-![](https://github.com/dgynfi/TestGameCenter/raw/master/images/qq155353383.jpg)
+- 欢迎加入技术交流群，一起探讨技术问题。
+
+<div align=left>
+&emsp; <img src="https://github.com/dgynfi/TestGameCenter/raw/master/images/qq155353383.jpg" width="20%" /> 
+</div>
 
 ## 日志
 
@@ -21,11 +24,11 @@
 
 ## 使用说明
 
-- 如何测试Game Center认证？(How to test the Game Center authentication?)
+- 如何测试 Game Center 认证？(How to test the Game Center authentication?)
 
-1. 在苹果开发者后台，创建并勾选Game Center的证书，然后生成mobileprovision配置文件，如何创建证书和生成配置文件？请大家在网上搜索一下，这里不再阐述。
+1. 在苹果开发者后台，创建并勾选 Game Center 的证书，然后生成 mobileprovision 配置文件，如何创建证书和生成配置文件？请大家在网上搜索一下，这里不再阐述。
 
-2. 在iTunes Store中创建应用，打开Game Cemter选项。
+2. 在 iTunes Store中 创建应用，打开 Game Cemter 选项。
 
 - 认证并测试 (Authentication and Testing)
 
@@ -60,7 +63,7 @@
 
 ## 通知观察
 
-   当玩家的认证信息发生了改变时，即可认为玩家在系统设置中的 Game Center 上切换了另一个账号，应用就会通知观察者，从而开发者在应用中处理一些相关的任务。
+&emsp; 当玩家的认证信息发生了改变时，即可认为玩家在系统设置中的 Game Center 上切换了另一个账号，应用就会通知观察者，从而开发者在应用中处理一些相关的任务。
 
 ```ObjC
 - (void)addAuthenticationObserver {
