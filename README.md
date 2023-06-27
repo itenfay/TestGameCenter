@@ -1,15 +1,15 @@
-[如果此项目能帮助到你，你就给它一颗星，谢谢！(If this project can help you, you will give it a star. Thanks!)](https://github.com/dgynfi/TestGameCenter)
+[如果此项目能帮助到你，你就给它一颗星，谢谢！(If this project can help you, you will give it a star. Thanks!)](https://github.com/chenxing640/TestGameCenter)
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)&nbsp;
 
 ## TestGameCenter
 
-通过封装的 `DYFGameCenterWrapper` 类完成 Game Center 的授权认证。( Completes the Game Center authentication access through encapsulated  `DYFGameCenterWrapper`  class.)
+通过封装的 `DYFGameCenterWrapper` 类完成 Game Center 的授权认证。(Completes the Game Center authentication access through encapsulated `DYFGameCenterWrapper` class.)
 
 ## Group (ID:614799921)
 
 <div align=left>
-&emsp; <img src="https://github.com/dgynfi/TestGameCenter/raw/master/images/g614799921.jpg" width="30%" /> 
+&emsp; <img src="https://github.com/chenxing640/TestGameCenter/raw/master/images/g614799921.jpg" width="30%" /> 
 </div>
 
 ## Logs
@@ -86,4 +86,4 @@
 
 ##  Code Sample
 
-- [Code Sample Portal](https://github.com/dgynfi/TestGameCenter/blob/master/TestGameCenter/ViewController.m)
+- [Code Sample Portal](https://github.com/chenxing640/TestGameCenter/blob/master/TestGameCenter/ViewController.m)
